@@ -92,3 +92,16 @@ exports.usersDeletePost = (req, res) => {
   usersStorage.deleteUser(req.params.id);
   res.redirect("/");
 };
+
+exports.usersSearchGet = (req, res) => {
+    const users = usersStorage.getUsers();
+    const searchUser = users.find((user)=> user.email === req.query.email);
+
+    if(!searchUser){
+        return res.status(404).render("notfound")
+    }
+
+    res.render("searchUser", {
+        name: searchUser,
+    })
+}

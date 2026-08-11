@@ -5,8 +5,14 @@
   <title><%= title %></title>
 </head>
 <body>
-  <h1><%= title %></h1>
-<!-- In views/index.ejs -->
+    <p>Search user: </p>
+    <form action="/search" method="GET">
+        <label for="email">Email</label>
+        <input type="search" name="email" placeholder="john@doe.com" required>
+        <button type="submit">Search</button>
+    </form>
+    <hr>
+    <h1><%= title %></h1>
 <ul>
   <% if (locals.users) { %>
     <% users.forEach(function(user) { %>
